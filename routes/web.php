@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\RegisterUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/register', [RegisterUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisterUserController::class, 'store']);
+
+route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
