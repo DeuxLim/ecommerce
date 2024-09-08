@@ -38,7 +38,7 @@ class RegisterRequest extends FormRequest
             'username' =>   ['required', 'max:255', 'unique:users,username'],
             'email' =>      ['required', 'email', 'unique:users,email'],
             'password' =>   ['required', 'confirmed'], //Password::min(8)->mixedCase()->numbers()->symbols()] use this later
-            'is_seller' =>      ['nullable', 'boolean']
+            'is_seller' =>  ['nullable', 'boolean']
         ];
     }
 

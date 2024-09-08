@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterUserController;
 
@@ -15,10 +17,13 @@ use App\Http\Controllers\RegisterUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index')->middleware('auth');
 
+// product routes
+Route::get('/',[ProductController::class, 'index'])->name('product.index');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
+
+// user routes
 Route::get('/register', [RegisterUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
 

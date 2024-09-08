@@ -21,7 +21,7 @@ class SessionController extends Controller
             ]);
         }
 
-        return redirect()->intended(route('index'));
+        return redirect()->intended(route('product.index'));
     }
 
     public function destroy(){

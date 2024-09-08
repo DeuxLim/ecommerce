@@ -23,9 +23,7 @@
 <body>
     <div id="container" class="w-full">
         <main class="main h-full">
-            @auth
-                <x-navigation />
-            @endauth
+            <x-navigation />
             {{ $slot }}
         </main>
     </div>

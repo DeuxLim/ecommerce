@@ -28,7 +28,7 @@ class RegisterUserController extends Controller
 
         Auth::login($user);
 
-        return Redirect::route('index')->with('success', 'Welcome!');
+        return Redirect::route('product.index')->with('success', 'Welcome!');
 
     }
 }

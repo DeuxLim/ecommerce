@@ -95,6 +95,7 @@
                                 <span class="badge">New</span>
                             </a>
                         </li>
+                        <li><a href="{{ route('product.create') }}">Post a product listing</a></li>
                         <li><a>Settings</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">
