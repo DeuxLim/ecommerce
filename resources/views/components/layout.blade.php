@@ -11,22 +11,27 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                    }
+                    colors: {}
                 }
             }
         }
     </script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <div id="container" class="bg-red-500 h-screen w-full">
-        <main class="main h-full bg-orange-500">
-            <x-navigation/>
+    <div id="container" class="w-full">
+        <main class="main h-full">
+            @auth
+                <x-navigation />
+            @endauth
             {{ $slot }}
         </main>
     </div>
-    <footer class="h-10 bg-emerald-500"></footer>
+    @auth
+        <footer class="h-10"></footer>
+    @endauth
 </body>
 
 </html>

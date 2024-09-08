@@ -17,9 +17,11 @@ use App\Http\Controllers\RegisterUserController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/register', [RegisterUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisterUserController::class, 'store']);
 
+route::post('/login', [SessionController::class, 'store']);
+route::get('/login', [SessionController::class, 'create'])->name('login');
 route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
