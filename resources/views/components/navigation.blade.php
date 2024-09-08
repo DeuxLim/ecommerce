@@ -95,7 +95,11 @@
                                 <span class="badge">New</span>
                             </a>
                         </li>
-                        <li><a href="{{ route('product.create') }}">Post a product listing</a></li>
+                        @can('create', App\Models\Product::class)
+                            <li>
+                                <a href="{{ route('product.create') }}">Post a product listing</a>
+                            </li>
+                        @endcan
                         <li><a>Settings</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">
