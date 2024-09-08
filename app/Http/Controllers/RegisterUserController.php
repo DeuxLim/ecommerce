@@ -23,6 +23,7 @@ class RegisterUserController extends Controller
             'username' => $validatedData['username'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
+            'is_seller' => $validatedData['is_seller']
         ]);
 
         Auth::login($user);

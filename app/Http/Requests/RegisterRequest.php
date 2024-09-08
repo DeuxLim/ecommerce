@@ -17,6 +17,14 @@ class RegisterRequest extends FormRequest
         return true;
     }
 
+    public function prepareForValidation()
+    {
+        // Ensure 'is_seller' defaults to false if not present
+        $this->merge([
+            'is_seller' => $this->has('is_seller') ? true : false,
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,7 +37,8 @@ class RegisterRequest extends FormRequest
             'last_name' =>  ['required', 'max:255', 'string'],
             'username' =>   ['required', 'max:255', 'unique:users,username'],
             'email' =>      ['required', 'email', 'unique:users,email'],
-            'password' =>   ['required', 'confirmed'] //Password::min(8)->mixedCase()->numbers()->symbols()] use this later
+            'password' =>   ['required', 'confirmed'], //Password::min(8)->mixedCase()->numbers()->symbols()] use this later
+            'is_seller' =>      ['nullable', 'boolean']
         ];
     }
 

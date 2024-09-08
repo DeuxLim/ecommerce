@@ -24,6 +24,8 @@
                             class="input input-bordered @error('password') input-error @enderror" required />
                         <label class="label">
                             <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+                            <a href="{{ route('register') }}" class="label-text-alt link link-hover">Create an
+                                account</a>
                         </label>
                         @error('password')
                             <span class="text-error mt-1">{{ $message }}</span>
