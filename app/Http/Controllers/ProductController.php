@@ -26,7 +26,7 @@ class ProductController extends Controller
     }
 
     public function show(Product $product){
-        return view('products.show', ["product" => $product]);
+        return view('products.show', ["product" => $product, "relatedProducts" => Product::all()]);
     }
 
     public function edit(Product $product){
