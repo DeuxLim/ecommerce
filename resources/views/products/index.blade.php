@@ -1,7 +1,8 @@
 <x-layout>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
         @foreach ($products as $product)
-            <div class="bg-white border rounded-lg shadow-md overflow-hidden">
+            <a href="{{ route('product.show', ['product' => $product->id]) }}"
+                class="bg-white border rounded-lg shadow-md overflow-hidden">
                 <!-- Image -->
                 <img src="{{ asset($product->image) }}" alt="Product Image" class="w-full h-48 object-cover">
 
@@ -20,7 +21,7 @@
                             class="inline-block bg-yellow-200 text-yellow-800 text-xs font-medium py-1 px-2 rounded-full">Pre-Order</span>
                     @endif
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 </x-layout>
