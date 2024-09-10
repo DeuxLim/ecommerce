@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterUserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,8 @@ Route::post('/register', [RegisterUserController::class, 'store'])->name('regist
 route::post('/login', [SessionController::class, 'store']);
 route::get('/login', [SessionController::class, 'create'])->name('login');
 route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
+
+// User verification routes
+Route::get('/email/verify', [RegisterUserController::class, 'verification_notice'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [RegisterUserController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [RegisterUserController::class, 'resend_verification_notice'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');

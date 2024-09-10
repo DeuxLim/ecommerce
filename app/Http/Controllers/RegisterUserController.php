@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class RegisterUserController extends Controller
 {
@@ -28,11 +30,25 @@ class RegisterUserController extends Controller
             'is_seller' => $validatedData['is_seller']
         ]);
 
+        event(new Registered($user));
         Mail::to($user->email)->send(new UserRegistered($user));
 
         Auth::login($user);
 
-        return Redirect::route('product.index')->with('success', 'Welcome!');
+        return Redirect::route('verification.notice');
+    }
 
+    public function verification_notice(){
+        return view('auth.verify-email');
+    }
+
+    public function verify(EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect(route('product.index'));
+    }
+
+    public function resend_verification_notice(Request $request){
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', 'Verification link sent!');
     }
 }
