@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\UserRegistered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Redirect;
 
@@ -25,6 +27,8 @@ class RegisterUserController extends Controller
             'password' => Hash::make($validatedData['password']),
             'is_seller' => $validatedData['is_seller']
         ]);
+
+        Mail::to($user->email)->send(new UserRegistered($user));
 
         Auth::login($user);
 
