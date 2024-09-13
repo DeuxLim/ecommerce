@@ -11,7 +11,7 @@ class ProductService
      * Create a new product.
      *
      * @param array $data
-     * @param \App\Models\User $user
+     * @param \App\Models\Users\User $user
      * @return \App\Models\Product
      */
     public function createProduct(array $data, $user)

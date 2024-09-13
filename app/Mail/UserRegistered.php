@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Models\User;
+use App\Models\Users\User;
 
 class UserRegistered extends Mailable
 {
@@ -18,7 +18,7 @@ class UserRegistered extends Mailable
     /**
      * The User Instance
      *
-     * @var \App\Models\User
+     * @var \App\Models\Users\User
      */
     protected $user;
 

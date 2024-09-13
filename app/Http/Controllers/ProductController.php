@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Users\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
