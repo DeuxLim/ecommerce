@@ -17,15 +17,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            Schema::create('orders', function (Blueprint $table) {
-                $table->id(); // Primary key
-                $table->foreignIdFor(User::class)->onDelete('cascade');; // Foreign key to users table
-                $table->foreignIdFor(PaymentMethod::class)->nullable()->onDelete('cascade');; // Foreign key to payment_methods table
-                $table->foreignIdFor(UserAddress::class)->nullable()->onDelete('cascade');; // Foreign key to user_addresses table
-                $table->decimal('total_amount', 10, 2); // Total amount for the order
-                $table->string('status')->default('pending'); // Order status (pending, completed, etc.)
-                $table->timestamps();
-            });
+            $table->id(); // Primary key
+            $table->foreignIdFor(User::class)->onDelete('cascade'); // Foreign key to users table
+            $table->foreignIdFor(PaymentMethod::class)->nullable()->onDelete('cascade'); // Foreign key to payment_methods table
+            $table->foreignIdFor(UserAddress::class)->nullable()->onDelete('cascade'); // Foreign key to user_addresses table
+            $table->decimal('total_amount', 10, 2); // Total amount for the order
+            $table->string('status')->default('pending'); // Order status (pending, completed, etc.)
+            $table->timestamps();
         });
     }
 
