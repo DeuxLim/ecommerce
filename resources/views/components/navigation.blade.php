@@ -92,9 +92,23 @@
                         <li>
                             <a class="justify-between">
                                 Profile
-                                <span class="badge">New</span>
                             </a>
                         </li>
+
+                        {{-- Check if user is not verified --}}
+                        @if (!auth()->user()->hasVerifiedEmail())
+                        <!-- Form to resend verification email -->
+                        <li>
+                            <form id="resend-verification-form" action="{{ route('verification.send') }}" method="POST">
+                                @csrf
+                                <a class="justify-between">
+                                    <button>Verify Email</button>
+                                </a>
+                            </form>
+                        </li>
+                        @endif
+
+
                         @can('create', App\Models\Product::class)
                             <li>
                                 <a href="{{ route('product.create') }}">Post a product listing</a>
