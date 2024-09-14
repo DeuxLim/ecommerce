@@ -8,6 +8,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Users\UserAddress;
+use App\Models\Users\PaymentMethod;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -46,7 +48,19 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function product(){
+    public function products(){
         return $this->hasMany(Product::class);
+    }
+
+    public function address(){
+        return $this->hasOne(UserAddress::class);
+    }
+
+    public function payment(){
+        return $this->hasOne(PaymentMethod::class);
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }

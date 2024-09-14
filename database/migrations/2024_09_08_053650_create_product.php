@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade'); // Foreign key for seller
+            $table->foreignIdFor(Category::class)->nullable();; // Foreign key for seller
             $table->string('name'); // Product name
             $table->string('image')->nullable(); // Product image (nullable in case there's no image)
             $table->string('category'); // Product category/tag
