@@ -36,7 +36,7 @@ class ProductController extends Controller
     public function store(NewProductRequest $request){
         $validatedData = $request->validated();
         $user = Auth::user();
-        $this->product->createProduct($validatedData,  $user);
+        $this->products->createProduct($validatedData,  $user);
         return redirect()->route('product.index');
     }
 
