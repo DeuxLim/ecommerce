@@ -4,6 +4,7 @@ use App\Models\Users\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Models\Category;
 
 return new class extends Migration
 {
