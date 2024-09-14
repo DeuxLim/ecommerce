@@ -16,13 +16,13 @@ return new class extends Migration
     {
         Schema::create('users_addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);  
-            $table->string('address_line_1'); // Primary address line
+            $table->foreignIdFor(User::class)->nullable()->unique();  
+            $table->string('address_line_1')->nullable(); // Primary address line
             $table->string('address_line_2')->nullable(); // Optional second address line
-            $table->string('city');
-            $table->string('state');
-            $table->string('country');
-            $table->string('postal_code');
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
+            $table->string('postal_code')->nullable();
             $table->string('phone')->nullable(); // Optional phone number
             $table->boolean('is_default')->default(false); // Default flag
             $table->timestamps();

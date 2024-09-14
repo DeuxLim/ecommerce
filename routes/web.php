@@ -29,6 +29,10 @@ Route::patch('/product/{product}', [ProductController::class, 'update'])->name('
 // Auth and Session Routes
 Route::get('/register', [RegisterUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
+// Additional user information
+Route::get('/user/address', [RegisterUserController::class, 'edit_address'])->name('user.address.edit');
+Route::put('/user/address', [RegisterUserController::class, 'update_address'])->name('user.address.update');
+
 route::post('/login', [SessionController::class, 'store']);
 route::get('/login', [SessionController::class, 'create'])->name('login');
 route::post('/logout', [SessionController::class, 'destroy'])->name('logout');

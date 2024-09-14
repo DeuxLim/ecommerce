@@ -25,6 +25,9 @@ class UserAddress extends Model
         'is_default'
     ];
 
+    // Specify the custom table name
+    protected $table = 'users_addresses';
+
     public function user(){
         return $this->belongsTo(User::class);
     }
